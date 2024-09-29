@@ -14,3 +14,7 @@ variable "project_name" {
 variable "environment" {
     type = string
 }
+
+variable "enable_dns_hostnames"{
+    default =  true
+}
