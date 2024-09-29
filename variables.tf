@@ -18,3 +18,30 @@ variable "environment" {
 variable "enable_dns_hostnames"{
     default =  true
 }
+
+variable "public_subnet_cidr"{
+    type=list
+    validation{
+        condition = length(var.public_subnet_cidr) == 2
+        error_message = "please provide 2 valid public subnet cider"
+    }
+
+}
+
+variable "private_subnet_cidr"{
+    type=list
+    validation{
+        condition = length(var.private_subnet_cidr) == 2
+        error_message = "please provide 2 valid public subnet cider"
+    }
+
+}
+
+variable "database_subnet_cidr"{
+    type=list
+    validation{
+        condition = length(var.database_subnet_cidr) == 2
+        error_message = "please provide 2 valid public subnet cider"
+    }
+
+}
