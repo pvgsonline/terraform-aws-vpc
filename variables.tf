@@ -4,7 +4,7 @@ variable "cidr"{
 }
 
 variable "common_tags"{
-    default= {}
+    default = {}
 }
 
 variable "project_name" {
