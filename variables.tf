@@ -1,6 +1,5 @@
 variable "cidr"{
-    type=string
-    default={}
+    type=string 
 
 }
 
