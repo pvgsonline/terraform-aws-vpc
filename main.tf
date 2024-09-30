@@ -11,7 +11,7 @@ resource "aws_vpc" "main" {
 
 
 #Internet gateway creation
-resource "aws_internet_gateway" "gateway" {
+resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 
   tags = merge(var.common_tags ,{
@@ -89,7 +89,7 @@ resource "aws_nat_gateway" "main" {
   }
   )
 
-  depends_on = [aws_internet_gateway.gateway]
+  depends_on = [aws_internet_gateway.igw]
 
 }
 
@@ -124,7 +124,7 @@ resource "aws_route_table" "database" {
 resource "aws_route" "public" {
   route_table_id            = aws_route_table.public.id
   destination_cidr_block    = "0.0.0.0/0"
-  gateway_id = aws_internet_gateway.gateway.id
+  gateway_id = aws_internet_gateway.igw.id
 }
 
 resource "aws_route" "private" {
